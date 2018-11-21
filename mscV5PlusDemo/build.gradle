@@ -1,0 +1,41 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+
+    defaultConfig {
+        applicationId "com.iflytek.mscv5plusdemo"
+        minSdkVersion 14
+        targetSdkVersion 27
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    allprojects {
+        repositories {
+            jcenter()
+            mavenCentral()
+        }
+    }
+}
+
+dependencies {
+    implementation files('libs/Msc.jar')
+    //compile project(':MscLibSrc')
+    implementation 'com.android.support:support-v4:27.1.1'
+    implementation 'com.squareup.leakcanary:leakcanary-android:1.5'
+
+    //debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+    //releaseCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+}
